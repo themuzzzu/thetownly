@@ -37,6 +37,7 @@ import {
   Clock,
   PhoneCall
 } from 'lucide-react';
+import Interactive3DTown from './components/Interactive3DTown.jsx';
 
 /* ─── TOWNLY INTERACTIVE SATURN LOGO (PHYSICS MOONS) ─── */
 class Moon {
@@ -610,114 +611,22 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* ─── LIVE TOWN SONAR (RADAR INTERACTIVE) ─── */}
-      <section id="radar" className="relative z-10 py-20 max-w-5xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#007FFF] uppercase tracking-widest mb-2">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Live Geofence Scanner</span>
+      {/* ─── THE LIVING 3D ISOMETRIC TOWN ─── */}
+      <section id="town-3d" className="relative z-10 py-16 max-w-5xl mx-auto px-6">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#007FFF]/30 bg-[#007FFF]/10 text-xs font-mono font-bold text-[#80bfff] mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#007FFF]" />
+            <span>INTERACTIVE THREE.JS ISOMETRIC WORLD</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Town Sonar Telemetry.
+            The Living 3D Town.
           </h2>
-          <p className="mt-3 text-slate-400 text-sm">
-            Click any active store blip to view live dispatch availability and connect directly with the merchant.
+          <p className="mt-3 text-slate-400 text-sm sm:text-base">
+            Drag to orbit around the neighborhood. Watch our 3D runner navigate real store routes, and click on any storefront to inspect its live catalog.
           </p>
         </div>
 
-        <SpotlightCard className="p-8 sm:p-12 border-[#007FFF]/20">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            
-            {/* Left Info Console */}
-            <div className="md:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#007FFF]/10 border border-[#007FFF]/30 text-xs font-mono text-[#80bfff]">
-                <span>[ TARGET NODE: {selectedRadarIdx + 1} / {radarNodes.length} ]</span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                  {radarNodes[selectedRadarIdx].name}
-                </h3>
-                <p className="text-xs text-[#007FFF] font-mono mt-1">
-                  {radarNodes[selectedRadarIdx].category}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-                  <div className="text-slate-500 text-[10px] uppercase">Distance</div>
-                  <div className="text-emerald-400 font-bold text-sm mt-0.5">{radarNodes[selectedRadarIdx].distance}</div>
-                </div>
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-                  <div className="text-slate-500 text-[10px] uppercase">Fulfillment ETA</div>
-                  <div className="text-[#007FFF] font-bold text-sm mt-0.5">{radarNodes[selectedRadarIdx].eta}</div>
-                </div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-[#061026] border border-[#007FFF]/30 text-xs">
-                <div className="text-[#80bfff] text-[11px] font-mono uppercase tracking-wider font-semibold">Direct Advantage</div>
-                <div className="text-slate-200 mt-1 font-medium">{radarNodes[selectedRadarIdx].deal}</div>
-              </div>
-
-              <motion.a
-                href="#app"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="w-full py-3.5 rounded-xl font-bold text-white bg-[#007FFF] hover:bg-[#0066d6] flex items-center justify-center gap-2 text-xs shadow-lg shadow-[#007FFF]/30"
-              >
-                <span>Connect Direct with {radarNodes[selectedRadarIdx].name}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </motion.a>
-            </div>
-
-            {/* Right Sonar Visual Display */}
-            <div className="md:col-span-6 flex justify-center">
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full border border-[#007FFF]/30 bg-[#030713] flex items-center justify-center shadow-2xl shadow-[#007FFF]/10 overflow-hidden">
-                
-                {/* Sonar Rings */}
-                <div className="absolute w-[80%] h-[80%] rounded-full border border-[#007FFF]/15" />
-                <div className="absolute w-[55%] h-[55%] rounded-full border border-[#007FFF]/20" />
-                <div className="absolute w-[30%] h-[30%] rounded-full border border-[#007FFF]/25" />
-
-                {/* Radar Axes */}
-                <div className="absolute w-full h-[1px] bg-[#007FFF]/15" />
-                <div className="absolute h-full w-[1px] bg-[#007FFF]/15" />
-
-                {/* Sweeping Sonar Needle */}
-                <div className="absolute inset-0 animate-radar origin-center pointer-events-none">
-                  <div className="w-1/2 h-1/2 bg-gradient-to-br from-[#007FFF]/35 via-[#007FFF]/5 to-transparent rounded-tl-full" />
-                </div>
-
-                {/* Center User Hub */}
-                <div className="relative z-20 w-4 h-4 rounded-full bg-[#007FFF] flex items-center justify-center shadow-lg shadow-[#007FFF]">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                </div>
-
-                {/* Interactive Blips */}
-                {radarNodes.map((node) => {
-                  const active = selectedRadarIdx === node.id;
-                  return (
-                    <motion.button
-                      key={node.id}
-                      onClick={() => setSelectedRadarIdx(node.id)}
-                      style={{ top: node.pos.top, left: node.pos.left }}
-                      whileHover={{ scale: 1.4 }}
-                      className="absolute z-30 -translate-x-1/2 -translate-y-1/2 cursor-pointer focus:outline-none"
-                    >
-                      <div className="relative flex items-center justify-center">
-                        {active && (
-                          <div className="absolute -inset-2 rounded-full border border-[#80bfff] animate-ping" />
-                        )}
-                        <span className={`w-3.5 h-3.5 rounded-full ${active ? 'bg-white shadow-lg shadow-white' : 'bg-[#007FFF]'} border-2 border-[#040814]`}></span>
-                      </div>
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </div>
-
-          </div>
-        </SpotlightCard>
+        <Interactive3DTown />
       </section>
 
       {/* ─── MERCHANT 0% SAVINGS SIMULATOR ─── */}

@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thetownly",
+  "main": "src/index.js",
+  "compatibility_date": "2025-09-27",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    { "pattern": "thetownly.in", "custom_domain": true },
+    { "pattern": "www.thetownly.in", "custom_domain": true }
+  ]
+}

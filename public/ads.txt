@@ -1,0 +1,5 @@
+# Google AdSense / AdMob
+google.com, pub-5982328732581278, DIRECT, f08c47fec0942fa0
+
+# Meta Audience Network
+facebook.com, 1056655926948407, DIRECT, c3e20eee3f780d68
